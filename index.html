@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ashir</title>
+    <!-- Bosstrape -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<div class="container">
+    <center>
+        <h1 class="mt-5 mb-3">Write text and browse will speak for you.</h1>
+    </center>
+    <center>
+        <textarea class="textarea " id="inputtext" cols="30" width="700px"></textarea>
+    </center>
+    <center>
+        <button id="speak"class= "btn btn-primary">speak</button>
+        <button id="stop" class= "btn  btn-danger">Stop</button>
+    </center>
+
+</div>
+<body>
+
+</body>
+<script>
+    const content = document.querySelector("#inputtext")
+    const speak = document.querySelector("#speak")
+    const stop = document.querySelector("#stop")
+    let syth = window.speechSynthesis
+    let utterence = new SpeechSynthesisUtterance
+    
+    speak.addEventListener("click" , ()=>{
+        utterence.text = content.value
+        syth.speak(utterence)
+        console.log("Speak")
+    })
+    
+    stop.addEventListener("click" , ()=>{
+        if(syth.speaking){
+            syth.cancel
+            console.log("Cancel")
+        }
+    })
+
+</script>
+
+</html>
